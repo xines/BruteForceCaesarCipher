@@ -19,7 +19,7 @@ func BruteForceCaesarCipher(targetStr string) []string {
 	// Variable buffers
 	target, answers, cipher := []string{}, []string{}, []string{}
 
-	// Create target array
+	// Append characters to target buffer
 	for _, r := range targetStr {
 		target = append(target, string(r))
 	}
