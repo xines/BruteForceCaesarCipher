@@ -9,11 +9,11 @@ import (
 // Brute forces & returns all possible combinations of standard Caesar cipher
 func BruteForceCaesarCipher(targetStr string) []string {
 
-	fmt.Println("Starting brute force: ", targetStr)
+	fmt.Println("Starting Caesar brute force: ", targetStr)
 
 	alphabet := [26]string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}
 
-	// Fix all uppercase
+	// Fix all input uppercase
 	targetStr = strings.ToUpper(targetStr)
 
 	// Variable buffers
@@ -24,11 +24,10 @@ func BruteForceCaesarCipher(targetStr string) []string {
 		target = append(target, string(r))
 	}
 
-	// Reverse loop alphabet indexe count
+	// Reverse loop alphabet
 	for v := len(alphabet) - 1; v >= 0; v-- {
 
 		aBufList := alphabet[0 : v+1]
-
 		for r := len(alphabet) - 1; r >= 0; r-- {
 			if r == v {
 				cipher = alphabet[v+1:]
@@ -41,11 +40,12 @@ func BruteForceCaesarCipher(targetStr string) []string {
 		for _, x := range target {
 
 			// Check for spaces
-			// If not a space we idioticly assume character is in the defined alphabet
 			if x == " " {
 				sequence = append(sequence, " ")
 				continue
 			}
+
+			// If not a space we idiotically assume character is in the defined alphabet
 
 			// Check characters
 			for i, letter := range alphabet {
@@ -61,7 +61,7 @@ func BruteForceCaesarCipher(targetStr string) []string {
 
 			// For space support
 			if idx == " " {
-				pa = pa + " "
+				pa += " "
 				continue
 			}
 
